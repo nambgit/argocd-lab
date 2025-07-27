@@ -51,7 +51,7 @@ spec:
           value: "2"
         readinessProbe:
           httpGet:
-            path: /realms/master
+            path: auth/realms/master
             port: 8080
           initialDelaySeconds: 30
           periodSeconds: 10
