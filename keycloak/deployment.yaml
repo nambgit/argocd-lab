@@ -6,7 +6,7 @@ metadata:
   labels:
     app: keycloak
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: keycloak
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: keycloak
-        image: quay.io/keycloak/keycloak:24.0.5
+        image: quay.io/keycloak/keycloak:26.3.0
         args: ["start-dev"]
         ports:
         - name: http
@@ -51,7 +51,7 @@ spec:
           value: "2"
         readinessProbe:
           httpGet:
-            path: auth/realms/master
+            path: /realms/master
             port: 8080
           initialDelaySeconds: 30
           periodSeconds: 10
