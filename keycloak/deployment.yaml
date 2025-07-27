@@ -45,13 +45,17 @@ spec:
           value: "true"
         - name: 'KC_CACHE_STACK'
           value: 'kubernetes'
+        #readinessProbe:
+          #httpGet:
+            #path: /realms/master
+            #port: 8080
+          #initialDelaySeconds: 30
+          #periodSeconds: 10
+          #failureThreshold: 3
         readinessProbe:
           httpGet:
-            path: /realms/master
-            port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          failureThreshold: 3
+            path: /health/ready
+            port: 9000
         resources:
           limits:
             cpu: "1"
